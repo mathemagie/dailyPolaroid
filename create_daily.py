@@ -9,9 +9,6 @@ from openai import OpenAI
 import datetime
 import sys
 
-# PROMPT = "Create an image of a crowded subway car during rush hour. The passengers are standing and sitting, with many holding onto metal bars and handles. Most of them are wearing masks, indicating a health precaution. The interior of the subway car features ventilation systems and bright lighting. Many passengers are engaged with their smartphones or other devices. The overall atmosphere should convey the hustle and bustle of a busy urban subway, with a slightly vintage or retro color palette. The scene should look realistic and detailed, capturing the essence of a typical city commute with polaroid style"
-# prompt = "Create a Polaroid-style photograph of vibrant pink roses in full bloom, set against the backdrop of a rustic stone wall. The image should capture the soft, nostalgic feel of a sunny day in a quaint garden, with hints of lush green leaves framing the flowers."
-
 
 def generate_image(prompt):
     """
