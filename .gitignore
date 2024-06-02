@@ -1,0 +1,10 @@
+# .gitignore
+
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.bmp
+*.tiff
+*.ico
