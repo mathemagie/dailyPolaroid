@@ -86,25 +86,28 @@ def get_description(image):
     )
 
     return response.json()["choices"][0]["message"]["content"]
-import sys
-import os
 
-# Check if command line argument exists
-if len(sys.argv) > 1:
+
+def main():
     # get arg 1 to get image name
     IMAGE_NAME = sys.argv[1]
-    
+
     # Check if the file is a PNG file
     _, file_extension = os.path.splitext(IMAGE_NAME)
-    if file_extension.lower() != '.png':
+    if file_extension.lower() != ".png":
         print("Invalid file type. Please provide a PNG file.")
         print("Usage: python create_daily.py <image_name.png>")
     else:
         prompt = get_description(IMAGE_NAME)
         print(prompt)
-        generate_image(prompt)
-else:
-    print(
-        "No image name provided. Please provide an image name as a command line argument."
-    )
-    print("Usage: python create_daily.py <image_name.png>")
+        # generate_image(prompt)
+
+
+if __name__ == "__main__":  # Check if command line argument exists
+    if len(sys.argv) > 1:
+        main()
+    else:
+        print(
+            "No image name provided. Please provide an image name as a command line argument."
+        )
+        print("Usage: python create_daily.py <image_name.png>")
