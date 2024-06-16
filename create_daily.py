@@ -69,7 +69,7 @@ def get_description(image):
                 "content": [
                     {
                         "type": "text",
-                        "text": "write me a prompt for dalle-3 with style polaroid",
+                        "text": "write me a prompt for Midjourney with style polaroid and photorealistic",
                     },
                     {
                         "type": "image_url",
@@ -84,8 +84,35 @@ def get_description(image):
     response = requests.post(
         "https://api.openai.com/v1/chat/completions", headers=headers, json=payload
     )
+    # print (response.json())
 
     return response.json()["choices"][0]["message"]["content"]
+
+def convert_heic_to_png(heic_path, png_path):
+    """
+    Converts a HEIC image to PNG format.
+    
+    :param heic_path: Path to the input HEIC file.
+    :param png_path: Path to save the output PNG file.
+    """
+    from PIL import Image
+    import pyheif
+
+    # Read HEIC file
+    heif_file = pyheif.read(heic_path)
+
+    # Convert to PIL Image
+    image = Image.frombytes(
+        heif_file.mode, 
+        heif_file.size, 
+        heif_file.data,
+        "raw",
+        heif_file.mode,
+        heif_file.stride,
+    )
+
+    # Save as PNG
+    image.save(png_path, "PNG")
 
 
 def main():
@@ -94,13 +121,13 @@ def main():
 
     # Check if the file is a PNG file
     _, file_extension = os.path.splitext(IMAGE_NAME)
-    if file_extension.lower() != ".png":
+    if 0:
         print("Invalid file type. Please provide a PNG file.")
         print("Usage: python create_daily.py <image_name.png>")
     else:
         prompt = get_description(IMAGE_NAME)
         print(prompt)
-        # generate_image(prompt)
+        generate_image(prompt)
 
 
 if __name__ == "__main__":  # Check if command line argument exists

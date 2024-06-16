@@ -1,6 +1,8 @@
 # .gitignore
 
 *.jpg
+*.sh
+*.flv
 *.jpeg
 *.png
 *.gif
@@ -8,3 +10,7 @@
 *.bmp
 *.tiff
 *.ico
+*.mp4
+*.HEIC
+
+medias
